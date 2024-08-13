@@ -1,5 +1,7 @@
 const plantsContainer = document.getElementById('plants-container');
 
+const apiKey = '__API_KEY__';
+
 let requestOptions = {
   method: 'GET',
   redirect: 'follow'
@@ -12,8 +14,9 @@ let requestOptions = {
 
 // Fetch plants from Trefle.io API
 async function fetchPlants() {
+    console.log(apiKey);
     try {
-      const response = await fetch(`https://perenual.com/api/species-list?key=sk-IHVq66b10dba664746437`);
+      const response = await fetch(`https://perenual.com/api/species-list?key=${apiKey}`);
 
       const data = await response.json();
       console.log(data)
