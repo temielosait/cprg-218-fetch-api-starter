@@ -14,12 +14,11 @@ let requestOptions = {
 
 // Fetch plants from Trefle.io API
 async function fetchPlants() {
-    console.log(apiKey);
     try {
       const response = await fetch(`https://perenual.com/api/species-list?key=${apiKey}`);
 
       const data = await response.json();
-      console.log(data)
+      console.log(apiKey)
         displayPlants(data.data);
     } catch (error) {
         console.error('Error fetching plants:', error);
@@ -34,6 +33,7 @@ function displayPlants(plants) {
         plantCard.classList.add('plant-card');
 
         const plantImage = document.createElement('img');
+        console.log("plant", plant)
         plantImage.src = plant.image_url || 'default-plant.jpg'; // Fallback image if none available
         plantImage.alt = plant.common_name;
 
