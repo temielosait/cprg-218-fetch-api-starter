@@ -34,7 +34,7 @@ function displayPlants(plants) {
 
         const plantImage = document.createElement('img');
         console.log("plant", plant)
-        plantImage.src = plant.image_url || 'default-plant.jpg'; // Fallback image if none available
+        plantImage.src = plant.default_image.original_url || 'default-plant.jpg'; // Fallback image if none available
         plantImage.alt = plant.common_name;
 
         const plantName = document.createElement('h3');
