@@ -4,47 +4,48 @@ const apiKey = '__API_KEY__';
 
 let requestOptions = {
   method: 'GET',
-  redirect: 'follow'
+  redirect: 'follow',
 };
 
-// fetch(`https://perenual.com/api/species-list?key=sk-IHVq66b10dba664746437`, requestOptions)
+// fetch(`https://perenual.com/api/species-list?key=${apiKey}`, requestOptions)
 //   .then(response => response.text())
 //   .then(result => console.log(result))
 //   .catch(error => console.log('error', error));
 
 // Fetch plants from Trefle.io API
 async function fetchPlants() {
-    try {
-      const response = await fetch(`https://perenual.com/api/species-list?key=${apiKey}`);
+  try {
+    const response = await fetch(
+      `https://perenual.com/api/species-list?key=${apiKey}`
+    );
 
-      const data = await response.json();
-      console.log(apiKey)
-        displayPlants(data.data);
-    } catch (error) {
-        console.error('Error fetching plants:', error);
-    }
+    const data = await response.json();
+    displayPlants(data.data);
+  } catch (error) {
+    console.error('Error fetching plants:', error);
+  }
 }
 
 // Display plants in the DOM
 function displayPlants(plants) {
-    plantsContainer.innerHTML = ''; // Clear previous content
-    plants.forEach(plant => {
-        const plantCard = document.createElement('div');
-        plantCard.classList.add('plant-card');
+  plantsContainer.innerHTML = ''; // Clear previous content
+  plants.forEach((plant) => {
+    const plantCard = document.createElement('div');
+    plantCard.classList.add('plant-card');
 
-        const plantImage = document.createElement('img');
-        console.log("plant", plant)
-        plantImage.src = plant.default_image.original_url || 'default-plant.jpg'; // Fallback image if none available
-        plantImage.alt = plant.common_name;
+    const plantImage = document.createElement('img');
 
-        const plantName = document.createElement('h3');
-        plantName.textContent = plant.common_name || 'Unknown Plant';
+    plantImage.src = plant.default_image.regular_url || 'default-plant.jpg'; // Fallback image if none available
+    plantImage.alt = plant.common_name;
 
-        plantCard.appendChild(plantImage);
-        plantCard.appendChild(plantName);
+    const plantName = document.createElement('h3');
+    plantName.textContent = plant.common_name || 'Unknown Plant';
 
-        plantsContainer.appendChild(plantCard);
-    });
+    plantCard.appendChild(plantImage);
+    plantCard.appendChild(plantName);
+
+    plantsContainer.appendChild(plantCard);
+  });
 }
 
 // Initialize
