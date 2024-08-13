@@ -1,0 +1,48 @@
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #800080; /* Purple */
+}
+
+.emoji-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background-color: #432643; /* Purple */
+  border: 2px solid #000; /* Black */
+  border-radius: 10px;
+  width: 200px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.card p {
+  color: #fff; /* White */
+  font-size: 16px;
+  margin: 10px 0 0;
+}
